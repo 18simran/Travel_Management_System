@@ -219,15 +219,16 @@ public class BookPackage extends JFrame implements ActionListener {
                 bookPackage.printStackTrace();
             }
 
-        } else if (e.getSource() == backbtn)
+        }
+        else if (e.getSource() == backbtn)
         {
             new Dashboard(user) ;
             setVisible(false);
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         new BookPackage(user) ;
     }
-
 }

@@ -1,9 +1,14 @@
 package travel;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class CheckPackage extends JFrame {
-    CheckPackage() {
+public class CheckPackage extends JFrame implements ActionListener {
+    JButton back ;
+   static String user ;
+    CheckPackage(String user) {
+        this.user = user ;
         setBounds(350, 150, 900, 600);
         String[] package1 = {"GOLD PACKAGE","6 Days and 7 Nights","Airport Assistance","Half Day City Tour","Daily  Buffet","Soft Drinks Free","Full Day3 Island Cruise","English Speaking Guide","Book Package","Rs 50000/-","package1.jpg"} ;
         String[] package2 = {"SILVER PACKAGE","5 Day and 6 Nights","Entrance Free Tickets","Greet at Airport","Welcome Drinks on Arrival","Night Safari","Cruise with Dinner","Movie Tickets","Book Now","Rs 32000/- ","package2.jpg"};
@@ -18,9 +23,15 @@ public class CheckPackage extends JFrame {
         JPanel p3 = createPackage1(package3);
         tab.addTab("Package3",null,p3);
 
+        back = new JButton("Back" );
+        back.setBounds(160,470,100,40);
+        back.setBorder(BorderFactory.createLineBorder(Color.white));
+        back.setBackground(new Color(31, 48, 94));
+        back.setFocusPainted(false);
+        back.setForeground(Color.white);
+        back.addActionListener(this);
 
-
-
+        add(back);
         add(tab) ;
         setVisible(true);
     }
@@ -121,6 +132,16 @@ public class CheckPackage extends JFrame {
     public static void main(String[] args)
     {
 
-        new CheckPackage() ;
+        new CheckPackage(user) ;
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == back)
+        {
+            new Dashboard(" ");
+            setVisible(false);
+        }
     }
 }

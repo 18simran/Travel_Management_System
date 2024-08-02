@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 public class Dashboard  extends JFrame implements ActionListener
 {
     static String username ;
-    JButton addPersonalDetails,updatePersonalDetails,viewDetails,checkPackage,bookPackage;
+    JButton addPersonalDetails,updatePersonalDetails,viewDetails,checkPackage,bookPackage,viewPackage,viewHotels,destinations,bookHotel,calculator,notepad,about;
     Dashboard(String username)
     {
         this.username = username ;
@@ -109,30 +109,33 @@ public class Dashboard  extends JFrame implements ActionListener
         bookPackage.addActionListener(this);
 
 
-        JButton viewPackage = new JButton("View Package") ;
+        viewPackage = new JButton("View Package") ;
         viewPackage.setBounds(0,300,350,50);
         viewPackage.setBackground(new Color(0, 41, 41));
         viewPackage.setForeground(Color.white);
         viewPackage.setFont(new Font("Tahoma",Font.PLAIN, 19));
         viewPackage.setMargin(new Insets(0,0,0,120));
         viewPackage.setFocusPainted(false);
+        viewPackage.addActionListener(this);
 
-        JButton viewHotels = new JButton("View Hotels") ;
+        viewHotels = new JButton("View Hotels") ;
         viewHotels.setBounds(0,350,350,55);
         viewHotels.setBackground(new Color(0, 41, 41));
         viewHotels.setForeground(Color.white);
         viewHotels.setFont(new Font("Tahoma",Font.PLAIN, 19));
         viewHotels.setMargin(new Insets(0,0,0,140));
         viewHotels.setFocusPainted(false);
+        viewHotels.addActionListener(this);
 
 
-        JButton bookHotel = new JButton("Book Hotel") ;
+        bookHotel = new JButton("Book Hotel") ;
         bookHotel.setBounds(0,405,350,55);
         bookHotel.setBackground(new Color(0, 41, 41));
         bookHotel.setForeground(Color.white);
         bookHotel.setFont(new Font("Tahoma",Font.PLAIN, 19));
         bookHotel.setMargin(new Insets(0,0,0,150));
         bookHotel.setFocusPainted(false);
+        bookHotel.addActionListener(this);
 
 
         JButton viewBookedHotels = new JButton("View Booked Hotels") ;
@@ -144,43 +147,47 @@ public class Dashboard  extends JFrame implements ActionListener
         viewBookedHotels.setFocusPainted(false);
 
 
-        JButton destinations = new JButton("Destinations") ;
+        destinations = new JButton("Destinations") ;
         destinations.setBounds(0,510,350,55);
         destinations.setBackground(new Color(0, 41, 41));
         destinations.setForeground(Color.white);
         destinations.setFont(new Font("Tahoma",Font.PLAIN, 19));
         destinations.setMargin(new Insets(0,0,0,140));
         destinations.setFocusPainted(false);
+        destinations.addActionListener(this);
 
 
-        JButton payments = new JButton("Payments") ;
-        payments.setBounds(0,560,350,55);
-        payments.setBackground(new Color(0, 41, 41));
-        payments.setForeground(Color.white);
-        payments.setFont(new Font("Tahoma",Font.PLAIN, 19));
-        payments.setMargin(new Insets(0,0,0,150));
-        payments.setFocusPainted(false);
+        calculator = new JButton("Calculator") ;
+        calculator.setBounds(0,560,350,55);
+        calculator.setBackground(new Color(0, 41, 41));
+        calculator.setForeground(Color.white);
+        calculator.setFont(new Font("Tahoma",Font.PLAIN, 19));
+        calculator.setMargin(new Insets(0,0,0,150));
+        calculator.setFocusPainted(false);
+        calculator.addActionListener(this);
 
 
 
-        JButton notepad = new JButton("Notepad") ;
+        notepad = new JButton("Notepad") ;
         notepad.setBounds(0,610,350,55);
         notepad.setBackground(new Color(0, 41, 41));
         notepad.setForeground(Color.white);
         notepad.setFont(new Font("Tahoma",Font.PLAIN, 19));
         notepad.setMargin(new Insets(0,0,0,160));
         notepad.setFocusPainted(false);
+        notepad.addActionListener(this);
 
 
 
 
-        JButton about = new JButton("About") ;
+        about = new JButton("About") ;
         about.setBounds(0,665,350,55);
         about.setBackground(new Color(0, 41, 41));
         about.setForeground(Color.white);
         about.setFont(new Font("Tahoma",Font.PLAIN, 19));
         about.setMargin(new Insets(0,0,0,180));
         about.setFocusPainted(false);
+        about.addActionListener(this);
 
 
 
@@ -188,8 +195,6 @@ public class Dashboard  extends JFrame implements ActionListener
        text.setBounds(900,200,200,70);
        text.setFont(new Font("Tahoma",Font.BOLD,30));
        text.setForeground(Color.white);
-
-
 
 
 
@@ -214,7 +219,7 @@ public class Dashboard  extends JFrame implements ActionListener
         p2.add(bookHotel) ;
         p2.add(viewBookedHotels);
         p2.add(destinations);
-        p2.add(payments);
+        p2.add(calculator);
         p2.add(notepad);
         p2.add(about) ;
 
@@ -225,11 +230,6 @@ public class Dashboard  extends JFrame implements ActionListener
         p2.setLayout(null);
         setLayout(null);
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-
-        new Dashboard(username) ;
     }
 
     @Override
@@ -250,13 +250,50 @@ public class Dashboard  extends JFrame implements ActionListener
             setVisible(false);
         } else if (e.getSource() == checkPackage)
         {
-            new CheckPackage() ;
+            new CheckPackage(username) ;
             setVisible(false);
         } else if (e.getSource() == bookPackage )
         {
             new BookPackage(username) ;
             setVisible(false);
+        } else if (e.getSource() == viewPackage) {
+            new ViewPackage(username) ;
+            setVisible(false);
+        } else if(e.getSource() == viewHotels)
+        {
+            new CheckHotels(username) ;
+            setVisible(false);
+        } else if(e.getSource() == destinations)
+        {
+            new Destinations(username) ;
+            setVisible(false);
+        }else if (e.getSource() == bookHotel)
+        {
+            new BookHotel(username) ;
+            setVisible(false);
+        } else if(e.getSource() == calculator) {
+            try {
+                Runtime.getRuntime().exec("calc.exe");
+            } catch (Exception calc) {
+                calc.printStackTrace();
+            }
+        } else if (e.getSource() == notepad)
+
+        {
+            try {
+                Runtime.getRuntime().exec("notepad.exe");
+            } catch (Exception calc) {
+                calc.printStackTrace();
+            }
+        } else if(e.getSource() == about)
+        {
+            new About(username) ;
+            setVisible(false);
         }
 
+    }
+    public static void main(String[] args) {
+
+        new Dashboard(username) ;
     }
 }

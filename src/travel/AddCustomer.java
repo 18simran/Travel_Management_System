@@ -237,11 +237,13 @@ static String user ;
             String phonef = phoneTF.getText() ;
             String emailf = emailTF.getText() ;
 
-            try {
+            try
+            {
                 Conn c = new Conn() ;
                 String queryl = "insert into customer values('"+unamef+"','"+idf+"','"+numberf+"','"+namef+"','"+genderf+"','"+countryf+"','"+addressf+"','"+phonef+"','"+emailf+"')" ;
                 c.s.executeUpdate(queryl) ;
                 JOptionPane.showMessageDialog(null,"Account Created Successfully");
+                new Dashboard(user) ;
                 setVisible(false);
             }
             catch (Exception ea)
@@ -255,4 +257,3 @@ static String user ;
         }
         }
     }
-

@@ -8,8 +8,9 @@ public class Destinations extends JFrame implements Runnable {
     JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
     JLabel caption;
     JLabel[] label = new JLabel[]{l1, l2, l3, l4, l5, l6, l7, l8, l9, l10};
-
-    Destinations() {
+static String user ;
+    Destinations(String user) {
+        this.user = user ;
         setBounds(250, 130, 1000, 600);
         caption = new JLabel();
         caption.setBounds(50, 500, 1000, 70);
@@ -67,6 +68,6 @@ public class Destinations extends JFrame implements Runnable {
     }
     public static void main(String[] args)
     {
-        new Destinations() ;
+        new Destinations(user) ;
     }
 }
