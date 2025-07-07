@@ -4,11 +4,11 @@ A comprehensive Java-based travel management application built with IntelliJ IDE
 
 
 ## Screenshots
-![Login Screen](screenshots/s1.png)
+![Login Screen](src/screenshots/s1.png)
 *User authentication interface with username and password fields*
 
 ### 
-![Registration](screenshots/s2.png)
+![Registration](src/screenshots/s2.png)
 *New user signup form with personal details*
 
 
