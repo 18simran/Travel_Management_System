@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 import java.beans.JavaBean;
 import java.sql.ResultSet;
 import java.sql.Struct;
-
 public class Login extends JFrame implements ActionListener
 {
     JButton btn1,btn2,btn3 ;
@@ -106,8 +105,6 @@ public class Login extends JFrame implements ActionListener
                 l2.add(btn3) ;
                 l2.add(text);
                 l2.setLayout(null);
-
-
                 add(l2);
                 add(l) ;
                 setLayout(null);
@@ -158,3 +155,5 @@ public class Login extends JFrame implements ActionListener
         new Login() ;
     }
 }
+
+
